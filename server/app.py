@@ -63,6 +63,11 @@ class PlantByID(Resource):
         plant = Plant.query.filter_by(id=id).first()
         if not plant:
             return {"error": "Plant not found"}, 404
+        db.session.delete(plant)
+        db.session.commit()
+
+      
+        return '', 204
 
 
 
